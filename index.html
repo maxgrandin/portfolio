@@ -6,27 +6,26 @@
   <title>Maximilian Grandin — Data Stories</title>
   <meta name="description" content="Short, visual data stories by Maximilian Grandin." />
   <style>
-    /* Theme tokens (light & dark) */
+    /* Theme tokens (softer dark & light) */
     :root{
-      /* dark (default) */
-      --bg:#0b0b0d;           /* near-black */
-      --fg:#f5f5f7;           /* off-white */
-      --muted:#9ca3af;        /* slate-400 */
-      --card:#121216;         /* dark card */
-      --border:#1f2430;       /* subtle border */
-      --accent:#facc15;       /* warm yellow */
-      --accent-2:#22d3ee;     /* cyan pop */
+      --bg:#1d1f24;           /* softer charcoal */
+      --fg:#f7f8fc;           /* off-white */
+      --muted:#c0c6d0;        /* lighter slate */
+      --card:#262a33;         /* mid dark card */
+      --border:#343a46;       /* visible border */
+      --accent:#ffd166;       /* warm gold */
+      --accent-2:#00cfff;     /* cyan */
       --chart-bg:#ffffff;     /* iframe frame */
       --radius:18px;
     }
     :root[data-theme="light"]{
-      --bg:#f7fafc;           /* light background */
-      --fg:#0f172a;           /* slate-900 */
-      --muted:#475569;        /* slate-600 */
+      --bg:#f5f7fa;           /* softened light */
+      --fg:#202632;           /* dark slate */
+      --muted:#66707f;        /* medium slate */
       --card:#ffffff;         /* white card */
-      --border:#e2e8f0;       /* light border */
-      --accent:#a16207;       /* deeper gold for light */
-      --accent-2:#0891b2;     /* teal/cyan */
+      --border:#cfd6e0;       /* light border */
+      --accent:#ffb703;       /* sunflower */
+      --accent-2:#0ea5e9;     /* azure */
       --chart-bg:#ffffff;
     }
 
@@ -39,13 +38,13 @@
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:20px}
-    header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,rgba(11,11,13,.95),rgba(11,11,13,.85));backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
-    :root[data-theme="light"] header{background:rgba(247,250,252,.85)}
+    header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,rgba(29,31,36,.92),rgba(29,31,36,.82));backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
+    :root[data-theme="light"] header{background:rgba(245,247,250,.85)}
     nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{font-weight:800;letter-spacing:.5px}
     .tabs{display:flex;gap:8px}
     .tab{border:1px solid var(--border);padding:8px 14px;border-radius:999px;color:var(--muted)}
-    .tab.active{background:var(--fg);color:#111;font-weight:700;border-color:transparent}
+    .tab.active{background:var(--fg);color:var(--bg);font-weight:700;border-color:transparent}
     h1,h2,h3{margin:10px 0}
     .muted{color:var(--muted)}
 
@@ -67,7 +66,8 @@
     footer{color:var(--muted);font-size:14px;padding:28px 0}
 
     /* SVG thumbs */
-    .thumb svg{width:100%;height:100%;display:block}
+    .thumb svg{width:100%;height:100%;display:block;transition:filter .25s ease}
+    :root[data-theme="light"] .thumb svg{filter:invert(1) hue-rotate(180deg)}
 
     /* theme toggle button */
     .theme-toggle{border:1px solid var(--border);border-radius:999px;padding:6px 10px;cursor:pointer;font:inherit;background:transparent;color:var(--fg);display:inline-flex;align-items:center;gap:8px}
@@ -465,7 +465,7 @@
       if(hash.startsWith('story-')) openStory(hash); else showTab(hash);
     } else { showTab('stories'); }
     document.getElementById('year').textContent=new Date().getFullYear();
-    </script>
+  </script>
   <script>
     // --- Theme handling ---
     (function(){
