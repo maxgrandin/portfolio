@@ -48,7 +48,7 @@
     .chart{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
     footer{color:var(--muted);font-size:14px;padding:28px 0}
 
-    /* SVG thumbs (generated) */
+    /* SVG thumbs */
     .thumb svg{width:100%;height:100%;display:block}
   </style>
 </head>
@@ -72,80 +72,203 @@
       <p class="muted">Short, visual articles. Built with Google Sheets + Datawrapper. Minimal, fast, and fun.</p>
 
       <div class="grid">
-        <!-- Story Card 1 -->
-        <a class="card" href="#story-tdf" onclick="openStory('story-tdf')">
+        <!-- 1 Greener cities, happier people (EU) -->
+        <a class="card" href="#story-green" onclick="openStory('story-green')">
           <div class="thumb">
-            <!-- Generated inline SVG: cycling vibe -->
-            <svg viewBox="0 0 1200 675" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0%" stop-color="#0ea5e9"/>
-                  <stop offset="100%" stop-color="#22d3ee"/>
-                </linearGradient>
-              </defs>
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
               <rect width="1200" height="675" fill="#0c0f17"/>
-              <circle cx="260" cy="520" r="110" fill="url(#g1)" opacity="0.9"/>
-              <circle cx="620" cy="520" r="110" fill="#facc15" opacity="0.9"/>
-              <path d="M1200 540 C900 460 700 430 520 440 C300 455 140 530 0 560 L0 675 L1200 675 Z" fill="#131722"/>
-              <text x="40" y="90" fill="#f5f5f7" font-size="40" font-family="Inter, system-ui" opacity="0.9">Tour de France · budgets vs results</text>
-            </svg>
-          </div>
-          <section>
-            <span class="pill">Cycling</span>
-            <h3>Is the Tour de France pay to win?</h3>
-            <p class="muted">Do bigger budgets buy better results? Budget estimates vs Tour outcomes, plus F1 cost‑cap context.</p>
-          </section>
-        </a>
-
-        <!-- Story Card 2 -->
-        <a class="card" href="#story-benelux" onclick="openStory('story-benelux')">
-          <div class="thumb">
-            <!-- Generated inline SVG: circuits/AI vibe -->
-            <svg viewBox="0 0 1200 675" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="1200" height="675" fill="#0c0f17"/>
-              <g stroke="#22d3ee" stroke-width="2" opacity="0.9">
-                <path d="M80 120 H520 V560 H80 Z" fill="none"/>
-                <path d="M520 340 H1120"/>
-                <circle cx="520" cy="340" r="6" fill="#22d3ee"/>
-                <circle cx="1120" cy="340" r="6" fill="#22d3ee"/>
-                <path d="M200 200 h120 v120 h-120 Z M360 420 h120 v120 h-120 Z" fill="none"/>
+              <g opacity="0.9">
+                <circle cx="240" cy="420" r="110" fill="#22c55e"/>
+                <circle cx="420" cy="300" r="60" fill="#4ade80"/>
+                <circle cx="520" cy="470" r="80" fill="#16a34a"/>
               </g>
-              <text x="40" y="90" fill="#f5f5f7" font-size="40" font-family="Inter, system-ui" opacity="0.9">Benelux AI · formation vs follow‑ons</text>
-            </svg>
-          </div>
-          <section>
-            <span class="pill">Tech ecosystems</span>
-            <h3>Benelux AI: formation vs follow‑ons</h3>
-            <p class="muted">Cohorts since 2020 — new formations, time‑to‑next round, and survival.</p>
-          </section>
-        </a>
-
-        <!-- Story Card 3 -->
-        <a class="card" href="#story-commute" onclick="openStory('story-commute')">
-          <div class="thumb">
-            <!-- Generated inline SVG: lake & city vibe -->
-            <svg viewBox="0 0 1200 675" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stop-color="#111827"/>
-                  <stop offset="100%" stop-color="#0b1220"/>
-                </linearGradient>
-              </defs>
-              <rect width="1200" height="675" fill="#0c0f17"/>
-              <g fill="url(#g2)">
-                <rect x="80" y="120" width="90" height="260"/>
-                <rect x="190" y="180" width="90" height="200"/>
-                <rect x="300" y="140" width="90" height="240"/>
-              </g>
-              <path d="M0 520 C220 500 340 560 520 560 C740 560 860 520 1200 540 L1200 675 L0 675 Z" fill="#0a1a2a"/>
-              <path d="M0 560 C220 540 340 600 520 600 C740 600 860 560 1200 580 L1200 675 L0 675 Z" fill="#112a3e" opacity="0.85"/>
-              <text x="40" y="90" fill="#f5f5f7" font-size="40" font-family="Inter, system-ui" opacity="0.9">Commute & wellbeing · CH vs Randstad</text>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Greener cities · happier people (EU)</text>
             </svg>
           </div>
           <section>
             <span class="pill">Wellbeing</span>
-            <h3>Commute & wellbeing: Switzerland vs Randstad</h3>
-            <p class="muted">Do shorter commutes and lake access correlate with higher reported wellbeing?</p>
+            <h3>Greener cities, happier people?</h3>
+            <p class="muted">Urban green space vs life satisfaction across EU cities.</p>
+          </section>
+        </a>
+
+        <!-- 2 Food inflation vs wages (Europe) -->
+        <a class="card" href="#story-foodwages" onclick="openStory('story-foodwages')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g stroke="#facc15" stroke-width="6" fill="none">
+                <path d="M60 540 L280 460 L460 500 L680 420 L900 460 L1140 380"/>
+              </g>
+              <g stroke="#22d3ee" stroke-width="6" fill="none" opacity="0.9">
+                <path d="M60 560 L280 520 L460 510 L680 500 L900 490 L1140 480"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Food inflation vs wages (Europe)</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Economics</span>
+            <h3>Food inflation vs wages</h3>
+            <p class="muted">Did wages keep up with grocery prices across Europe?</p>
+          </section>
+        </a>
+
+        <!-- 3 TDF € per point efficiency -->
+        <a class="card" href="#story-tdf-eff" onclick="openStory('story-tdf-eff')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <circle cx="260" cy="520" r="110" fill="#22d3ee" opacity="0.9"/>
+              <text x="420" y="520" fill="#facc15" font-size="120" font-family="Inter, system-ui">€</text>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">TDF · € per point efficiency</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Cycling</span>
+            <h3>TDF: € per point efficiency</h3>
+            <p class="muted">Which teams convert budget into Tour points most efficiently?</p>
+          </section>
+        </a>
+
+        <!-- 4 Grand Tour age curve -->
+        <a class="card" href="#story-agecurve" onclick="openStory('story-agecurve')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g stroke="#22d3ee" stroke-width="6" fill="none">
+                <path d="M100 520 C260 300 520 260 900 420"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Grand Tours · age vs results</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Cycling</span>
+            <h3>Grand Tour age curve</h3>
+            <p class="muted">Does average team age relate to GC/team results?</p>
+          </section>
+        </a>
+
+        <!-- 5 Startup births vs ECB rates -->
+        <a class="card" href="#story-startups-ecb" onclick="openStory('story-startups-ecb')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g stroke="#22d3ee" stroke-width="6" fill="none">
+                <path d="M80 520 L240 500 L360 460 L520 420 L700 460 L900 400 L1120 380"/>
+              </g>
+              <g stroke="#facc15" stroke-width="6" fill="none" opacity="0.85">
+                <path d="M80 560 L240 560 L360 540 L520 520 L700 520 L900 500 L1120 520"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Startup births vs ECB rates</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Startups</span>
+            <h3>Startup births vs ECB rates</h3>
+            <p class="muted">Did rising rates slow new firm creation in the Eurozone?</p>
+          </section>
+        </a>
+
+        <!-- 6 Active commute share vs life satisfaction (EU) -->
+        <a class="card" href="#story-activecommute" onclick="openStory('story-activecommute')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g opacity="0.9">
+                <circle cx="260" cy="520" r="90" fill="#22d3ee"/>
+                <circle cx="360" cy="520" r="20" fill="#0c0f17"/>
+                <rect x="520" y="460" width="200" height="80" fill="#facc15" rx="10"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Active commute & satisfaction (EU)</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Mobility</span>
+            <h3>Active commute share vs life satisfaction</h3>
+            <p class="muted">Walking/cycling share and reported wellbeing across EU countries.</p>
+          </section>
+        </a>
+
+        <!-- 7 Cycling lanes vs modal share growth (cities) -->
+        <a class="card" href="#story-lanes" onclick="openStory('story-lanes')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g stroke="#22d3ee" stroke-width="12" opacity="0.9">
+                <path d="M100 520 H1100"/>
+              </g>
+              <g stroke="#facc15" stroke-width="6" opacity="0.85">
+                <path d="M140 520 L300 460 L520 420 L740 380 L960 360"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Protected lanes & cycling share</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Mobility</span>
+            <h3>Cycling lanes vs modal share growth</h3>
+            <p class="muted">Do more protected lanes drive cycling share in European cities?</p>
+          </section>
+        </a>
+
+        <!-- 8 Benelux AI formation vs follow-ons -->
+        <a class="card" href="#story-benelux" onclick="openStory('story-benelux')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g stroke="#22d3ee" stroke-width="2" opacity="0.9">
+                <circle cx="320" cy="280" r="60" fill="none"/>
+                <circle cx="480" cy="420" r="40" fill="none"/>
+                <path d="M320 280 L480 420 L800 340"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Benelux AI · formation → follow‑ons</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Tech ecosystems</span>
+            <h3>Benelux AI: formation → follow‑ons</h3>
+            <p class="muted">Cohorts since 2020; median months to the next round.</p>
+          </section>
+        </a>
+
+        <!-- 9 Climate tech $ vs CO₂ intensity change (Europe) -->
+        <a class="card" href="#story-climatetech" onclick="openStory('story-climatetech')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g>
+                <path d="M60 540 L360 420 L680 500 L980 380" stroke="#22d3ee" stroke-width="6" fill="none"/>
+                <path d="M60 560 L360 540 L680 520 L980 480" stroke="#22c55e" stroke-width="6" fill="none" opacity="0.85"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Climate tech $ vs CO₂ intensity (EU)</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Climate tech</span>
+            <h3>Climate tech funding vs CO₂ intensity</h3>
+            <p class="muted">Does more climate tech $ relate to faster decarbonization in Europe?</p>
+          </section>
+        </a>
+
+        <!-- 10 Housing supply vs affordability (Europe) -->
+        <a class="card" href="#story-housing" onclick="openStory('story-housing')">
+          <div class="thumb">
+            <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g fill="#facc15" opacity="0.9">
+                <path d="M160 520 l60 -80 l60 80 Z"/>
+                <path d="M360 520 l60 -100 l60 100 Z"/>
+                <path d="M560 520 l60 -140 l60 140 Z"/>
+              </g>
+              <g stroke="#22d3ee" stroke-width="6" fill="none">
+                <path d="M160 380 L240 360 L320 340 L400 330 L480 320 L560 310 L640 300"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="38" font-family="Inter, system-ui">Housing supply vs affordability (EU)</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Housing</span>
+            <h3>Housing supply vs affordability</h3>
+            <p class="muted">Permits per capita vs price‑to‑income across Europe.</p>
           </section>
         </a>
       </div>
@@ -164,63 +287,123 @@
     </section>
 
     <!-- STORY PAGES (inline) -->
-    <section id="story-tdf" class="hidden">
+    <section id="story-green" class="hidden">
       <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
       <article>
-        <h1>Is the Tour de France pay to win?</h1>
-        <div class="hero">
-          <!-- Optional hero image (kept simple with SVG above)—you can paste a PNG here if you prefer -->
-        </div>
-        <p class="muted">Methods: team budget estimates from public reporting; Tour outcomes from ProCyclingStats. Exploratory visuals, not causal inference.</p>
+        <h1>Greener cities, happier people?</h1>
+        <p class="muted">Urban green space per capita vs life satisfaction across EU cities.</p>
         <div class="chart">
-          <!-- Datawrapper Chart 1: replace XXXX with your chart ID -->
-          <iframe title="TDF budgets vs results" src="https://datawrapper.dwcdn.net/XXXX/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+          <iframe title="Greener cities, happier people" src="https://datawrapper.dwcdn.net/AAAA/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
         </div>
-        <br />
+        <p class="muted">Sources: Eurostat Urban Audit; EU‑SILC life satisfaction. Spearman rho reported.</p>
+      </article>
+    </section>
+
+    <section id="story-foodwages" class="hidden">
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Food inflation vs wages</h1>
+        <p class="muted">Indexing both to 2019=100 across Europe to see the gap.</p>
         <div class="chart">
-          <!-- Datawrapper Chart 2 -->
-          <iframe title="Over/under performance" src="https://datawrapper.dwcdn.net/YYYY/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+          <iframe title="Food inflation vs wages (Europe)" src="https://datawrapper.dwcdn.net/BBBB/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
         </div>
-        <h3>Takeaways</h3>
-        <ul>
-          <li>Spend generally tracks results; strategy and goals (GC vs stages) matter.</li>
-          <li>Outliers annotated; try sensitivity excluding mega‑teams to see slope change.</li>
-        </ul>
-        <p class="muted">Sources: media budget roundups; ProCyclingStats; FIA articles for F1 cost‑cap context.</p>
+        <p class="muted">Sources: Eurostat HICP Food; OECD wage growth.</p>
+      </article>
+    </section>
+
+    <section id="story-tdf-eff" class="hidden">
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>TDF: € per point efficiency</h1>
+        <p class="muted">Which teams convert budget to Tour points most efficiently?</p>
+        <div class="chart">
+          <iframe title="TDF € per point" src="https://datawrapper.dwcdn.net/CCCC/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+        </div>
+        <p class="muted">Sources: media budget estimates; ProCyclingStats.</p>
+      </article>
+    </section>
+
+    <section id="story-agecurve" class="hidden">
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Grand Tour age curve</h1>
+        <p class="muted">Average team age vs team/GC points.</p>
+        <div class="chart">
+          <iframe title="Grand Tour age vs results" src="https://datawrapper.dwcdn.net/DDDD/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+        </div>
+        <p class="muted">Source: ProCyclingStats rosters and results.</p>
+      </article>
+    </section>
+
+    <section id="story-startups-ecb" class="hidden">
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Startup births vs ECB rates</h1>
+        <p class="muted">Did rising policy rates slow new firm creation in the Eurozone?</p>
+        <div class="chart">
+          <iframe title="Startup births vs ECB rates" src="https://datawrapper.dwcdn.net/EEEE/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+        </div>
+        <p class="muted">Sources: Eurostat business demography; ECB policy rate.</p>
+      </article>
+    </section>
+
+    <section id="story-activecommute" class="hidden">
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Active commute share vs life satisfaction</h1>
+        <p class="muted">Walking/cycling share and reported wellbeing across EU countries.</p>
+        <div class="chart">
+          <iframe title="Active commute & satisfaction" src="https://datawrapper.dwcdn.net/FFFF/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+        </div>
+        <p class="muted">Sources: Eurostat modal split; EU‑SILC life satisfaction.</p>
+      </article>
+    </section>
+
+    <section id="story-lanes" class="hidden">
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Cycling lanes vs modal share growth</h1>
+        <p class="muted">Do more protected lanes drive cycling share in European cities?</p>
+        <div class="chart">
+          <iframe title="Lanes vs share growth" src="https://datawrapper.dwcdn.net/GGGG/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+        </div>
+        <p class="muted">Sources: city open data; Eurostat urban stats.</p>
       </article>
     </section>
 
     <section id="story-benelux" class="hidden">
       <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
       <article>
-        <h1>Benelux AI: formation vs follow‑ons</h1>
-        <p class="muted">Cohorts since 2020. Definitions in footnotes.</p>
+        <h1>Benelux AI: formation → follow‑ons</h1>
+        <p class="muted">Cohorts since 2020; median months to next round.</p>
         <div class="chart">
-          <!-- Datawrapper Chart -->
-          <iframe title="Benelux AI cohorts" src="https://datawrapper.dwcdn.net/ZZZZ/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+          <iframe title="Benelux AI cohorts" src="https://datawrapper.dwcdn.net/HHHH/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
         </div>
-        <h3>Notes</h3>
-        <ul>
-          <li>Formation = first fundraise or registry event; follow‑on = subsequent priced round.</li>
-          <li>Time‑to‑next computed as median months from formation cohort to next round.</li>
-        </ul>
+        <p class="muted">Sources: public startup datasets; company registries.</p>
       </article>
     </section>
 
-    <section id="story-commute" class="hidden">
+    <section id="story-climatetech" class="hidden">
       <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
       <article>
-        <h1>Commute & wellbeing: Switzerland vs Randstad</h1>
-        <p class="muted">Exploring reported commute times, access to nature, and wellbeing indices.</p>
+        <h1>Climate tech funding vs CO₂ intensity</h1>
+        <p class="muted">Does more climate tech $ relate to faster decarbonization in Europe?</p>
         <div class="chart">
-          <!-- Datawrapper Chart -->
-          <iframe title="Commute vs wellbeing" src="https://datawrapper.dwcdn.net/WWWW/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+          <iframe title="Climate tech vs CO2 intensity" src="https://datawrapper.dwcdn.net/IIII/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
         </div>
-        <h3>Notes</h3>
-        <ul>
-          <li>Wellbeing proxy from national/cantonal statistics; commute from survey data.</li>
-          <li>Correlation ≠ causation; city selection and seasonality can bias results.</li>
-        </ul>
+        <p class="muted">Sources: Our World in Data; funding aggregates by country.</p>
+      </article>
+    </section>
+
+    <section id="story-housing" class="hidden">
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Housing supply vs affordability</h1>
+        <p class="muted">Permits per 1k people vs price‑to‑income across Europe.</p>
+        <div class="chart">
+          <iframe title="Housing supply vs affordability" src="https://datawrapper.dwcdn.net/JJJJ/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+        </div>
+        <p class="muted">Sources: Eurostat building permits; OECD price‑to‑income.</p>
       </article>
     </section>
 
@@ -231,11 +414,9 @@
 
   <script>
     const tabs={stories:document.getElementById('stories'),about:document.getElementById('about')};
-    const pages=['story-tdf','story-benelux','story-commute'];
+    const pages=['story-green','story-foodwages','story-tdf-eff','story-agecurve','story-startups-ecb','story-activecommute','story-lanes','story-benelux','story-climatetech','story-housing'];
     function showTab(name){
-      // hide story pages
       pages.forEach(id=>document.getElementById(id).classList.add('hidden'));
-      // toggle tabs
       Object.values(tabs).forEach(s=>s.classList.add('hidden'));
       tabs[name].classList.remove('hidden');
       document.getElementById('tab-stories').classList.toggle('active',name==='stories');
@@ -252,9 +433,9 @@
       window.scrollTo({top:0,behavior:'smooth'});
       location.hash=id;
     }
-    // hash routing
     const hash=location.hash.replace('#','');
-    if(['stories','about','story-tdf','story-benelux','story-commute'].includes(hash)){
+    const all=['stories','about',...pages];
+    if(all.includes(hash)){
       if(hash.startsWith('story-')) openStory(hash); else showTab(hash);
     } else { showTab('stories'); }
     document.getElementById('year').textContent=new Date().getFullYear();
