@@ -1,25 +1,152 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Maximilian Grandin — Data Notes</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maximilian Grandin — Data Stories</title>
+  <!-- Pretty, lightweight styles -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2/css/pico.min.css">
+  <style>
+    :root { --card-radius: 18px; }
+    header { padding: 1.2rem 0 0.6rem; }
+    nav ul { gap: .4rem; }
+    .tabs { display:flex; gap:.4rem; margin: .6rem 0 1.2rem; }
+    .tab { border:1px solid var(--muted-border-color); border-radius:999px; padding:.5rem 1rem; cursor:pointer; }
+    .tab.active { background: var(--primary); color: var(--primary-inverse); border-color: var(--primary); }
+    .grid { display:grid; gap:1rem; grid-template-columns: 1fr; }
+    @media (min-width: 640px){ .grid { grid-template-columns: repeat(2,1fr);} }
+    @media (min-width: 980px){ .grid { grid-template-columns: repeat(3,1fr);} }
+    .card { border:1px solid var(--muted-border-color); border-radius: var(--card-radius); overflow:hidden; background: var(--card-background-color); box-shadow: 0 4px 16px rgba(0,0,0,.04); }
+    .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg,#e5e7eb,#f9fafb); display:flex; align-items:center; justify-content:center; font-weight:600; color:#6b7280; }
+    .card section { padding: .9rem 1rem 1rem; }
+    .pill { display:inline-block; font-size:.75rem; padding:.25rem .6rem; border:1px solid var(--muted-border-color); border-radius:999px; color: var(--muted-color); }
+    .muted { color: var(--muted-color); }
+    .hidden { display:none; }
+    footer { margin:2rem 0 1rem; }
+    /* Article pages */
+    article h1 { margin-top:.2rem; }
+    .chart { border:1px solid var(--muted-border-color); border-radius: 12px; overflow:hidden; background:#fff; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Data Notes</h1>
-    <p>Short, visual reports on tech, sport, and policy.</p>
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong>MG · Data Stories</strong></li>
+      </ul>
+      <ul>
+        <li><a href="#" id="tab-stories" class="tab active" onclick="showTab('stories')">Stories</a></li>
+        <li><a href="#" id="tab-about" class="tab" onclick="showTab('about')">About</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <h2>Is the Tour de France pay to win?</h2>
-  <p>Do bigger budgets buy better results? A quick look at budgets vs outcomes.</p>
-  <iframe title="TDF Chart" src="https://datawrapper.dwcdn.net/XXXX/1/"
-          scrolling="no" frameborder="0" style="width:100%;height:420px;"></iframe>
+  <main class="container">
+    <!-- STORIES TAB -->
+    <section id="stories">
+      <h2>Stories</h2>
+      <p class="muted">Short, visual articles built with Google Sheets + Datawrapper.</p>
 
-  <hr>
-  <h3>More reports soon…</h3>
-  <p><a href="mailto:grandin.maximilian@gmail.com">Contact</a> · 
-     <a href="https://www.linkedin.com/in/maximilian-grandin">LinkedIn</a></p>
+      <div class="grid">
+        <!-- Card 1 -->
+        <a class="card" href="#story-tdf" onclick="openStory('story-tdf')">
+          <div class="thumb">Chart preview</div>
+          <section>
+            <span class="pill">Cycling</span>
+            <h3>Is the Tour de France pay to win?</h3>
+            <p class="muted">Do bigger budgets buy better results? Budget estimates vs Tour outcomes, with a nod to F1's cost cap.</p>
+          </section>
+        </a>
+
+        <!-- Card 2 -->
+        <a class="card" href="#story-benelux" onclick="openStory('story-benelux')">
+          <div class="thumb">Chart preview</div>
+          <section>
+            <span class="pill">Tech ecosystems</span>
+            <h3>Benelux AI: formation vs follow‑ons</h3>
+            <p class="muted">Cohort view of new company formation since 2020 and time‑to‑next round.</p>
+          </section>
+        </a>
+
+        <!-- Duplicate more cards as you add stories -->
+      </div>
+    </section>
+
+    <!-- ABOUT TAB -->
+    <section id="about" class="hidden">
+      <h2>About</h2>
+      <p>Hi, I’m Maximilian. I like turning data into clear, visual stories. This site is a lightweight portfolio while I learn, publish, and iterate.</p>
+      <ul>
+        <li>Based in Amsterdam. DE/EN bilingual.</li>
+        <li>Tools: Google Sheets, SQL/BigQuery, Power BI, Tableau, Datawrapper.</li>
+        <li>Interests: tech ecosystems, policy/wellbeing, cycling.</li>
+      </ul>
+      <p><a href="mailto:grandin.maximilian@gmail.com">grandin.maximilian@gmail.com</a> · <a href="https://www.linkedin.com/in/maximilian-grandin" target="_blank" rel="noopener">LinkedIn</a></p>
+    </section>
+
+    <!-- STORY PAGES (inline, simple) -->
+    <section id="story-tdf" class="hidden">
+      <a href="#" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Is the Tour de France pay to win?</h1>
+        <p class="muted">Methods: public budget estimates + Tour results (ProCyclingStats). This is an exploratory visual; not causal inference.</p>
+        <div class="chart">
+          <!-- Paste your Datawrapper iframe for Chart #1 -->
+          <!-- Example: <iframe title="TDF budgets vs results" src="https://datawrapper.dwcdn.net/XXXX/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe> -->
+        </div>
+        <br />
+        <div class="chart">
+          <!-- Paste your Datawrapper iframe for Chart #2 -->
+        </div>
+        <h3>Takeaways</h3>
+        <ul>
+          <li>Rank correlation suggests spend tracks results, with strategy and goals as confounders.</li>
+          <li>Outliers annotated; sensitivity without mega‑teams changes the slope.</li>
+        </ul>
+        <p class="muted">Sources: media budget roundups; ProCyclingStats; FIA articles for F1 cost‑cap context.</p>
+      </article>
+    </section>
+
+    <section id="story-benelux" class="hidden">
+      <a href="#" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Benelux AI: formation vs follow‑ons</h1>
+        <p class="muted">Cohorts since 2020. Definitions noted in footnotes.</p>
+        <div class="chart">
+          <!-- Paste Datawrapper iframe here -->
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <small class="muted">© <span id="year"></span> Maximilian Grandin • Built with plain HTML + Pico.css + Datawrapper</small>
+    </footer>
+  </main>
+
+  <script>
+    const tabs = { stories: document.getElementById('stories'), about: document.getElementById('about') };
+    const pages = ['story-tdf','story-benelux'];
+    function showTab(name){
+      // hide pages
+      pages.forEach(id=>document.getElementById(id).classList.add('hidden'));
+      // toggle tabs
+      Object.values(tabs).forEach(s=>s.classList.add('hidden'));
+      tabs[name].classList.remove('hidden');
+      document.getElementById('tab-stories').classList.toggle('active', name==='stories');
+      document.getElementById('tab-about').classList.toggle('active', name==='about');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    function openStory(id){
+      Object.values(tabs).forEach(s=>s.classList.add('hidden'));
+      pages.forEach(pid=>document.getElementById(pid).classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById('tab-stories').classList.add('active');
+      document.getElementById('tab-about').classList.remove('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Default view
+    showTab('stories');
+  </script>
 </body>
 </html>
