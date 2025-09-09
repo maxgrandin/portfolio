@@ -6,8 +6,9 @@
   <title>Maximilian Grandin — Data Stories</title>
   <meta name="description" content="Short, visual data stories by Maximilian Grandin." />
   <style>
-    /* Pudding-like dark theme */
+    /* Theme tokens (light & dark) */
     :root{
+      /* dark (default) */
       --bg:#0b0b0d;           /* near-black */
       --fg:#f5f5f7;           /* off-white */
       --muted:#9ca3af;        /* slate-400 */
@@ -15,14 +16,31 @@
       --border:#1f2430;       /* subtle border */
       --accent:#facc15;       /* warm yellow */
       --accent-2:#22d3ee;     /* cyan pop */
+      --chart-bg:#ffffff;     /* iframe frame */
       --radius:18px;
     }
+    :root[data-theme="light"]{
+      --bg:#f7fafc;           /* light background */
+      --fg:#0f172a;           /* slate-900 */
+      --muted:#475569;        /* slate-600 */
+      --card:#ffffff;         /* white card */
+      --border:#e2e8f0;       /* light border */
+      --accent:#a16207;       /* deeper gold for light */
+      --accent-2:#0891b2;     /* teal/cyan */
+      --chart-bg:#ffffff;
+    }
+
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
-    body{font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--fg)}
+    body{
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg); color:var(--fg);
+      transition: background .25s ease, color .25s ease;
+    }
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:20px}
     header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,rgba(11,11,13,.95),rgba(11,11,13,.85));backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
+    :root[data-theme="light"] header{background:rgba(247,250,252,.85)}
     nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{font-weight:800;letter-spacing:.5px}
     .tabs{display:flex;gap:8px}
@@ -45,11 +63,15 @@
     .hidden{display:none}
     article{max-width:780px}
     .hero{margin:10px 0 18px;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-    .chart{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
+    .chart{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--chart-bg)}
     footer{color:var(--muted);font-size:14px;padding:28px 0}
 
     /* SVG thumbs */
     .thumb svg{width:100%;height:100%;display:block}
+
+    /* theme toggle button */
+    .theme-toggle{border:1px solid var(--border);border-radius:999px;padding:6px 10px;cursor:pointer;font:inherit;background:transparent;color:var(--fg);display:inline-flex;align-items:center;gap:8px}
+    .theme-toggle svg{width:18px;height:18px}
   </style>
 </head>
 <body>
@@ -60,6 +82,10 @@
         <div class="tabs">
           <a href="#stories" id="tab-stories" class="tab active" onclick="showTab('stories')">Stories</a>
           <a href="#about" id="tab-about" class="tab" onclick="showTab('about')">About</a>
+          <button id="themeBtn" class="theme-toggle" type="button" aria-pressed="false" title="Toggle light/dark">
+            <span id="themeIcon" aria-hidden="true">🌙</span>
+            <span id="themeLabel" class="muted">Dark</span>
+          </button>
         </div>
       </nav>
     </div>
@@ -439,6 +465,42 @@
       if(hash.startsWith('story-')) openStory(hash); else showTab(hash);
     } else { showTab('stories'); }
     document.getElementById('year').textContent=new Date().getFullYear();
+    </script>
+  <script>
+    // --- Theme handling ---
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('themeBtn');
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+
+      // Initialize: localStorage > prefers-color-scheme > default (dark)
+      const saved = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      if(saved === 'light' || (!saved && prefersLight)){
+        root.setAttribute('data-theme','light');
+        btn.setAttribute('aria-pressed','true');
+        icon.textContent = '☀️';
+        label.textContent = 'Light';
+      }
+
+      btn.addEventListener('click', () => {
+        const isLight = root.getAttribute('data-theme') === 'light';
+        if(isLight){
+          root.removeAttribute('data-theme');
+          localStorage.setItem('theme','dark');
+          btn.setAttribute('aria-pressed','false');
+          icon.textContent = '🌙';
+          label.textContent = 'Dark';
+        } else {
+          root.setAttribute('data-theme','light');
+          localStorage.setItem('theme','light');
+          btn.setAttribute('aria-pressed','true');
+          icon.textContent = '☀️';
+          label.textContent = 'Light';
+        }
+      });
+    })();
   </script>
 </body>
 </html>
