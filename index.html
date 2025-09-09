@@ -72,6 +72,12 @@
     /* theme toggle button */
     .theme-toggle{border:1px solid var(--border);border-radius:999px;padding:6px 10px;cursor:pointer;font:inherit;background:transparent;color:var(--fg);display:inline-flex;align-items:center;gap:8px}
     .theme-toggle svg{width:18px;height:18px}
+  
+    /* About stacked layout */
+    .about-grid{display:grid;gap:20px;align-items:start}
+    @media(min-width:768px){.about-grid{grid-template-columns:1fr}}
+    .about-photo{border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;background:var(--card);max-width:380px}
+    .about-photo img{display:block;width:100%;height:auto}
   </style>
 </head>
 <body>
@@ -303,12 +309,19 @@
     <!-- ABOUT TAB -->
     <section id="about" class="hidden">
       <h2>About</h2>
-      <p>Hi, I’m Max. I turn data into clear, visual stories. This is a lightweight portfolio I update as I learn and publish.</p>
-      <ul>
-        <li>Based in Amsterdam · DE/EN bilingual · Dutch A2</li>
-        <li>Interests: tech ecosystems, policy & wellbeing, cycling</li>
-      </ul>
-      <p><a href="mailto:grandin.maximilian@gmail.com">grandin.maximilian@gmail.com</a> · <a href="https://www.linkedin.com/in/maximilian-grandin" target="_blank" rel="noopener">LinkedIn</a></p>
+      <div class="about-grid">
+        <div>
+          <p>Hi, I’m Max. I turn data into clear, visual stories. This is a lightweight portfolio I update as I learn and publish.</p>
+          <ul>
+            <li>Based in Amsterdam · DE/EN bilingual · Dutch A2</li>
+            <li>Interests: tech ecosystems, policy & wellbeing, cycling</li>
+          </ul>
+          <p><a href="mailto:grandin.maximilian@gmail.com">grandin.maximilian@gmail.com</a> · <a href="https://www.linkedin.com/in/maximilian-grandin" target="_blank" rel="noopener">LinkedIn</a></p>
+        </div>
+        <div class="about-photo">
+          <img src="portrait.png" alt="Portrait of Maximilian Grandin" loading="lazy" />
+        </div>
+      </div>
     </section>
 
     <!-- STORY PAGES (inline) -->
