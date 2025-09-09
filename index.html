@@ -4,137 +4,244 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Maximilian Grandin — Data Stories</title>
-  <!-- Pretty, lightweight styles -->
-  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2/css/pico.min.css">
+  <meta name="description" content="Short, visual data stories by Maximilian Grandin." />
   <style>
-    :root { --card-radius: 18px; }
-    header { padding: 1.2rem 0 0.6rem; }
-    nav ul { gap: .4rem; }
-    .tabs { display:flex; gap:.4rem; margin: .6rem 0 1.2rem; }
-    .tab { border:1px solid var(--muted-border-color); border-radius:999px; padding:.5rem 1rem; cursor:pointer; }
-    .tab.active { background: var(--primary); color: var(--primary-inverse); border-color: var(--primary); }
-    .grid { display:grid; gap:1rem; grid-template-columns: 1fr; }
-    @media (min-width: 640px){ .grid { grid-template-columns: repeat(2,1fr);} }
-    @media (min-width: 980px){ .grid { grid-template-columns: repeat(3,1fr);} }
-    .card { border:1px solid var(--muted-border-color); border-radius: var(--card-radius); overflow:hidden; background: var(--card-background-color); box-shadow: 0 4px 16px rgba(0,0,0,.04); }
-    .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg,#e5e7eb,#f9fafb); display:flex; align-items:center; justify-content:center; font-weight:600; color:#6b7280; }
-    .card section { padding: .9rem 1rem 1rem; }
-    .pill { display:inline-block; font-size:.75rem; padding:.25rem .6rem; border:1px solid var(--muted-border-color); border-radius:999px; color: var(--muted-color); }
-    .muted { color: var(--muted-color); }
-    .hidden { display:none; }
-    footer { margin:2rem 0 1rem; }
-    /* Article pages */
-    article h1 { margin-top:.2rem; }
-    .chart { border:1px solid var(--muted-border-color); border-radius: 12px; overflow:hidden; background:#fff; }
+    /* Pudding-like dark theme */
+    :root{
+      --bg:#0b0b0d;           /* near-black */
+      --fg:#f5f5f7;           /* off-white */
+      --muted:#9ca3af;        /* slate-400 */
+      --card:#121216;         /* dark card */
+      --border:#1f2430;       /* subtle border */
+      --accent:#facc15;       /* warm yellow */
+      --accent-2:#22d3ee;     /* cyan pop */
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--fg)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,rgba(11,11,13,.95),rgba(11,11,13,.85));backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border)}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{font-weight:800;letter-spacing:.5px}
+    .tabs{display:flex;gap:8px}
+    .tab{border:1px solid var(--border);padding:8px 14px;border-radius:999px;color:var(--muted)}
+    .tab.active{background:var(--fg);color:#111;font-weight:700;border-color:transparent}
+    h1,h2,h3{margin:10px 0}
+    .muted{color:var(--muted)}
+
+    /* Grid of story cards */
+    .grid{display:grid;gap:16px;grid-template-columns:1fr}
+    @media(min-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .15s ease, box-shadow .15s ease}
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .thumb{aspect-ratio:16/9;display:block;border-bottom:1px solid var(--border)}
+    .card section{padding:14px}
+    .pill{display:inline-block;font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);margin-bottom:8px}
+
+    /* Pages */
+    .hidden{display:none}
+    article{max-width:780px}
+    .hero{margin:10px 0 18px;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .chart{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
+    footer{color:var(--muted);font-size:14px;padding:28px 0}
+
+    /* SVG thumbs (generated) */
+    .thumb svg{width:100%;height:100%;display:block}
   </style>
 </head>
 <body>
-  <header class="container">
-    <nav>
-      <ul>
-        <li><strong>MG · Data Stories</strong></li>
-      </ul>
-      <ul>
-        <li><a href="#" id="tab-stories" class="tab active" onclick="showTab('stories')">Stories</a></li>
-        <li><a href="#" id="tab-about" class="tab" onclick="showTab('about')">About</a></li>
-      </ul>
-    </nav>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">MG · Data Stories</div>
+        <div class="tabs">
+          <a href="#stories" id="tab-stories" class="tab active" onclick="showTab('stories')">Stories</a>
+          <a href="#about" id="tab-about" class="tab" onclick="showTab('about')">About</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main class="container">
     <!-- STORIES TAB -->
     <section id="stories">
       <h2>Stories</h2>
-      <p class="muted">Short, visual articles built with Google Sheets + Datawrapper.</p>
+      <p class="muted">Short, visual articles. Built with Google Sheets + Datawrapper. Minimal, fast, and fun.</p>
 
       <div class="grid">
-        <!-- Card 1 -->
+        <!-- Story Card 1 -->
         <a class="card" href="#story-tdf" onclick="openStory('story-tdf')">
-          <div class="thumb">Chart preview</div>
+          <div class="thumb">
+            <!-- Generated inline SVG: cycling vibe -->
+            <svg viewBox="0 0 1200 675" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#0ea5e9"/>
+                  <stop offset="100%" stop-color="#22d3ee"/>
+                </linearGradient>
+              </defs>
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <circle cx="260" cy="520" r="110" fill="url(#g1)" opacity="0.9"/>
+              <circle cx="620" cy="520" r="110" fill="#facc15" opacity="0.9"/>
+              <path d="M1200 540 C900 460 700 430 520 440 C300 455 140 530 0 560 L0 675 L1200 675 Z" fill="#131722"/>
+              <text x="40" y="90" fill="#f5f5f7" font-size="40" font-family="Inter, system-ui" opacity="0.9">Tour de France · budgets vs results</text>
+            </svg>
+          </div>
           <section>
             <span class="pill">Cycling</span>
             <h3>Is the Tour de France pay to win?</h3>
-            <p class="muted">Do bigger budgets buy better results? Budget estimates vs Tour outcomes, with a nod to F1's cost cap.</p>
+            <p class="muted">Do bigger budgets buy better results? Budget estimates vs Tour outcomes, plus F1 cost‑cap context.</p>
           </section>
         </a>
 
-        <!-- Card 2 -->
+        <!-- Story Card 2 -->
         <a class="card" href="#story-benelux" onclick="openStory('story-benelux')">
-          <div class="thumb">Chart preview</div>
+          <div class="thumb">
+            <!-- Generated inline SVG: circuits/AI vibe -->
+            <svg viewBox="0 0 1200 675" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g stroke="#22d3ee" stroke-width="2" opacity="0.9">
+                <path d="M80 120 H520 V560 H80 Z" fill="none"/>
+                <path d="M520 340 H1120"/>
+                <circle cx="520" cy="340" r="6" fill="#22d3ee"/>
+                <circle cx="1120" cy="340" r="6" fill="#22d3ee"/>
+                <path d="M200 200 h120 v120 h-120 Z M360 420 h120 v120 h-120 Z" fill="none"/>
+              </g>
+              <text x="40" y="90" fill="#f5f5f7" font-size="40" font-family="Inter, system-ui" opacity="0.9">Benelux AI · formation vs follow‑ons</text>
+            </svg>
+          </div>
           <section>
             <span class="pill">Tech ecosystems</span>
             <h3>Benelux AI: formation vs follow‑ons</h3>
-            <p class="muted">Cohort view of new company formation since 2020 and time‑to‑next round.</p>
+            <p class="muted">Cohorts since 2020 — new formations, time‑to‑next round, and survival.</p>
           </section>
         </a>
 
-        <!-- Duplicate more cards as you add stories -->
+        <!-- Story Card 3 -->
+        <a class="card" href="#story-commute" onclick="openStory('story-commute')">
+          <div class="thumb">
+            <!-- Generated inline SVG: lake & city vibe -->
+            <svg viewBox="0 0 1200 675" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#111827"/>
+                  <stop offset="100%" stop-color="#0b1220"/>
+                </linearGradient>
+              </defs>
+              <rect width="1200" height="675" fill="#0c0f17"/>
+              <g fill="url(#g2)">
+                <rect x="80" y="120" width="90" height="260"/>
+                <rect x="190" y="180" width="90" height="200"/>
+                <rect x="300" y="140" width="90" height="240"/>
+              </g>
+              <path d="M0 520 C220 500 340 560 520 560 C740 560 860 520 1200 540 L1200 675 L0 675 Z" fill="#0a1a2a"/>
+              <path d="M0 560 C220 540 340 600 520 600 C740 600 860 560 1200 580 L1200 675 L0 675 Z" fill="#112a3e" opacity="0.85"/>
+              <text x="40" y="90" fill="#f5f5f7" font-size="40" font-family="Inter, system-ui" opacity="0.9">Commute & wellbeing · CH vs Randstad</text>
+            </svg>
+          </div>
+          <section>
+            <span class="pill">Wellbeing</span>
+            <h3>Commute & wellbeing: Switzerland vs Randstad</h3>
+            <p class="muted">Do shorter commutes and lake access correlate with higher reported wellbeing?</p>
+          </section>
+        </a>
       </div>
     </section>
 
     <!-- ABOUT TAB -->
     <section id="about" class="hidden">
       <h2>About</h2>
-      <p>Hi, I’m Maximilian. I like turning data into clear, visual stories. This site is a lightweight portfolio while I learn, publish, and iterate.</p>
+      <p>Hi, I’m Maximilian. I turn data into clear, visual stories. This is a lightweight portfolio I update as I learn and publish.</p>
       <ul>
-        <li>Based in Amsterdam. DE/EN bilingual.</li>
-        <li>Tools: Google Sheets, SQL/BigQuery, Power BI, Tableau, Datawrapper.</li>
-        <li>Interests: tech ecosystems, policy/wellbeing, cycling.</li>
+        <li>Based in Amsterdam · DE/EN bilingual · Dutch A2</li>
+        <li>Tools: Google Sheets, SQL/BigQuery, Power BI, Tableau, Datawrapper</li>
+        <li>Interests: tech ecosystems, policy & wellbeing, cycling</li>
       </ul>
       <p><a href="mailto:grandin.maximilian@gmail.com">grandin.maximilian@gmail.com</a> · <a href="https://www.linkedin.com/in/maximilian-grandin" target="_blank" rel="noopener">LinkedIn</a></p>
     </section>
 
-    <!-- STORY PAGES (inline, simple) -->
+    <!-- STORY PAGES (inline) -->
     <section id="story-tdf" class="hidden">
-      <a href="#" onclick="showTab('stories')">← Back to Stories</a>
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
       <article>
         <h1>Is the Tour de France pay to win?</h1>
-        <p class="muted">Methods: public budget estimates + Tour results (ProCyclingStats). This is an exploratory visual; not causal inference.</p>
+        <div class="hero">
+          <!-- Optional hero image (kept simple with SVG above)—you can paste a PNG here if you prefer -->
+        </div>
+        <p class="muted">Methods: team budget estimates from public reporting; Tour outcomes from ProCyclingStats. Exploratory visuals, not causal inference.</p>
         <div class="chart">
-          <!-- Paste your Datawrapper iframe for Chart #1 -->
-          <!-- Example: <iframe title="TDF budgets vs results" src="https://datawrapper.dwcdn.net/XXXX/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe> -->
+          <!-- Datawrapper Chart 1: replace XXXX with your chart ID -->
+          <iframe title="TDF budgets vs results" src="https://datawrapper.dwcdn.net/XXXX/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
         </div>
         <br />
         <div class="chart">
-          <!-- Paste your Datawrapper iframe for Chart #2 -->
+          <!-- Datawrapper Chart 2 -->
+          <iframe title="Over/under performance" src="https://datawrapper.dwcdn.net/YYYY/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
         </div>
         <h3>Takeaways</h3>
         <ul>
-          <li>Rank correlation suggests spend tracks results, with strategy and goals as confounders.</li>
-          <li>Outliers annotated; sensitivity without mega‑teams changes the slope.</li>
+          <li>Spend generally tracks results; strategy and goals (GC vs stages) matter.</li>
+          <li>Outliers annotated; try sensitivity excluding mega‑teams to see slope change.</li>
         </ul>
         <p class="muted">Sources: media budget roundups; ProCyclingStats; FIA articles for F1 cost‑cap context.</p>
       </article>
     </section>
 
     <section id="story-benelux" class="hidden">
-      <a href="#" onclick="showTab('stories')">← Back to Stories</a>
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
       <article>
         <h1>Benelux AI: formation vs follow‑ons</h1>
-        <p class="muted">Cohorts since 2020. Definitions noted in footnotes.</p>
+        <p class="muted">Cohorts since 2020. Definitions in footnotes.</p>
         <div class="chart">
-          <!-- Paste Datawrapper iframe here -->
+          <!-- Datawrapper Chart -->
+          <iframe title="Benelux AI cohorts" src="https://datawrapper.dwcdn.net/ZZZZ/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
         </div>
+        <h3>Notes</h3>
+        <ul>
+          <li>Formation = first fundraise or registry event; follow‑on = subsequent priced round.</li>
+          <li>Time‑to‑next computed as median months from formation cohort to next round.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="story-commute" class="hidden">
+      <a href="#stories" onclick="showTab('stories')">← Back to Stories</a>
+      <article>
+        <h1>Commute & wellbeing: Switzerland vs Randstad</h1>
+        <p class="muted">Exploring reported commute times, access to nature, and wellbeing indices.</p>
+        <div class="chart">
+          <!-- Datawrapper Chart -->
+          <iframe title="Commute vs wellbeing" src="https://datawrapper.dwcdn.net/WWWW/1/" scrolling="no" frameborder="0" style="width:100%;height:460px;"></iframe>
+        </div>
+        <h3>Notes</h3>
+        <ul>
+          <li>Wellbeing proxy from national/cantonal statistics; commute from survey data.</li>
+          <li>Correlation ≠ causation; city selection and seasonality can bias results.</li>
+        </ul>
       </article>
     </section>
 
     <footer>
-      <small class="muted">© <span id="year"></span> Maximilian Grandin • Built with plain HTML + Pico.css + Datawrapper</small>
+      <small>© <span id="year"></span> Maximilian Grandin • Built with plain HTML + SVG + Datawrapper</small>
     </footer>
   </main>
 
   <script>
-    const tabs = { stories: document.getElementById('stories'), about: document.getElementById('about') };
-    const pages = ['story-tdf','story-benelux'];
+    const tabs={stories:document.getElementById('stories'),about:document.getElementById('about')};
+    const pages=['story-tdf','story-benelux','story-commute'];
     function showTab(name){
-      // hide pages
+      // hide story pages
       pages.forEach(id=>document.getElementById(id).classList.add('hidden'));
       // toggle tabs
       Object.values(tabs).forEach(s=>s.classList.add('hidden'));
       tabs[name].classList.remove('hidden');
-      document.getElementById('tab-stories').classList.toggle('active', name==='stories');
-      document.getElementById('tab-about').classList.toggle('active', name==='about');
-      window.scrollTo({top:0, behavior:'smooth'});
+      document.getElementById('tab-stories').classList.toggle('active',name==='stories');
+      document.getElementById('tab-about').classList.toggle('active',name==='about');
+      window.scrollTo({top:0,behavior:'smooth'});
+      location.hash=name;
     }
     function openStory(id){
       Object.values(tabs).forEach(s=>s.classList.add('hidden'));
@@ -142,11 +249,15 @@
       document.getElementById(id).classList.remove('hidden');
       document.getElementById('tab-stories').classList.add('active');
       document.getElementById('tab-about').classList.remove('active');
-      window.scrollTo({top:0, behavior:'smooth'});
+      window.scrollTo({top:0,behavior:'smooth'});
+      location.hash=id;
     }
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Default view
-    showTab('stories');
+    // hash routing
+    const hash=location.hash.replace('#','');
+    if(['stories','about','story-tdf','story-benelux','story-commute'].includes(hash)){
+      if(hash.startsWith('story-')) openStory(hash); else showTab(hash);
+    } else { showTab('stories'); }
+    document.getElementById('year').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
